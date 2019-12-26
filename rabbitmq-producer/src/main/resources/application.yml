@@ -1,0 +1,6 @@
+spring:
+  rabbitmq:
+    host: 54.180.82.61
+    port: 5672
+    username : daily-mission-admin
+    password : minholee93
