@@ -1,27 +1,26 @@
 package com.course.rabbitmqconsumer.consumer;
 
-import com.course.rabbitmqconsumer.entity.Employee;
+
+import com.course.rabbitmqconsumer.entity.Picture;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
-import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 
-
 //@Service
-public class RabbitmqConsumer {
+public class PictureImageConsumer {
 
-    private Logger log = LoggerFactory.getLogger(RabbitmqConsumer.class);
+    private Logger log = LoggerFactory.getLogger(PictureImageConsumer.class);
 
     ObjectMapper objectMapper = new ObjectMapper();
 
-    @RabbitListener(queues = "q.employee")
+    @RabbitListener(queues = "q.picture.image")
     public void listen(String message){
         try {
-            Employee emp = objectMapper.readValue(message , Employee.class);
-            log.info("Employee is {} ", emp);
+            Picture p = objectMapper.readValue(message , Picture.class);
+            log.info("Image Picture is {} ", p);
         } catch (IOException e) {
             e.printStackTrace();
         }

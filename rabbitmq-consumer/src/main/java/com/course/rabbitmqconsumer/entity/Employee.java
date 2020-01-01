@@ -1,38 +1,24 @@
 package com.course.rabbitmqconsumer.entity;
 
+import com.course.rabbitmqconsumer.json.CustomLocalDateDeserializer;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-import com.fasterxml.jackson.annotation.JsonAutoDetect;
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.*;
-
-import java.beans.ConstructorProperties;
 import java.time.LocalDate;
 
-@Data
-@JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class Employee {
+
     private String employeeId;
+
     private String name;
+
+    @JsonDeserialize(using = CustomLocalDateDeserializer.class)
     private LocalDate birthDate;
-
-    public Employee(){
-
-    }
-
-    public Employee(String employeeId, String name, LocalDate birthDate){
-        super();
-        this.employeeId = employeeId;
-        this.name = name;
-        this.birthDate = birthDate;
-    }
-
-    @Override
-    public String toString() {
-        return "Employee{" +
-                "employeeId='" + employeeId + '\'' +
-                ", name='" + name + '\'' +
-                ", birthDate=" + birthDate +
-                '}';
-    }
 }
