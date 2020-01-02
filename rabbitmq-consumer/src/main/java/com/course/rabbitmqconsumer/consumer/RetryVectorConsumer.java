@@ -2,6 +2,7 @@ package com.course.rabbitmqconsumer.consumer;
 
 import java.io.IOException;
 
+import lombok.var;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.amqp.core.Message;
@@ -14,7 +15,7 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.rabbitmq.client.Channel;
 
-@Service
+//@Service
 public class RetryVectorConsumer {
 
 	private static final String DEAD_EXCHANGE_NAME = "x.guideline.dead";

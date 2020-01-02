@@ -9,5 +9,12 @@ spring:
         acknowledge-mode: manual
       simple:
         acknowledge-mode: manual
+        retry:
+          enabled: true
+          initial-interval: 3s
+          max-interval: 10s
+          max-attempts: 5
+          multiplier: 2
 server:
   port: 8081
+
