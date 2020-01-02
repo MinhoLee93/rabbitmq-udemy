@@ -17,4 +17,3 @@ spring:
           multiplier: 2
 server:
   port: 8081
-
