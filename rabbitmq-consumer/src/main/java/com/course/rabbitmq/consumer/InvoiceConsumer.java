@@ -8,6 +8,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.amqp.rabbit.annotation.Queue;
 import org.springframework.amqp.rabbit.annotation.RabbitHandler;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
+import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -17,8 +18,11 @@ public class InvoiceConsumer {
     private static final Logger log = LoggerFactory.getLogger(InvoiceConsumer.class);
 
     @RabbitHandler
-    public void handleInvoiceCreated(InvoiceCreatedMessage message){
+    @SendTo("exchange/routingkey")
+    public ReturnMessageType handleInvoiceCreated(InvoiceCreatedMessage message){
         log.info("invoice created : {} ", message);
+
+        return new ReturnMessageType();
     }
 
     @RabbitHandler
